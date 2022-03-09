@@ -9,3 +9,5 @@ Clone the repo to local, install necessary dependencies. Run the command: ```nod
 ## Usage
 To write and save notes on app.
 
+## Deployed Link
+[Heroku](url "https://note-taker-yan.herokuapp.com/")
