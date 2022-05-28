@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const uuid = require('uuid');
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3003;
 const app = express();
 
 // Middleware for data parsing
@@ -23,7 +23,7 @@ app.get('/notes', (req, res) => {
 
 // Display notes from db.json 
 app.get('/api/notes', (req, res) => {
-    fs.readFile('/db/db.json', 'utf8', (err, data) => {
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
         if (err) {
             console.log(err);
         };
@@ -39,16 +39,16 @@ app.get('*', (req, res) => {
 
 // Save notes to db.json
 app.post('/api/notes', (req, res) => {
-    fs.readFile('/db/db.json', 'utf8', (err, data) => {
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
         if (err) {
             console.log(err);
         };
         const notes = JSON.parse(data);
         const newNote = req.body;
-        newNote.id = uuid();
+        newNote.id = uuid.v1();
         notes.push(newNote);
 
-        fs.writeFile('/db/db.json', JSON.stringify(notes), (err) => {
+        fs.writeFile('./db/db.json', JSON.stringify(notes), (err) => {
             if (err) {
                 console.log(err);
             };
@@ -60,14 +60,14 @@ app.post('/api/notes', (req, res) => {
 
 // Delete notes from db.json
 app.delete('/api/notes/:id', (req, res) => {
-    fs.readFile('/db/db.json', 'utf8', (err, data) => {
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
         if (err) {
             console.log(err);
         };
         const notes = JSON.parse(data);
         notes.splice(req.params.id, 1);
 
-        fs.writeFile('/db.db.json', JSON.stringify(notes), (err) => {
+        fs.writeFile('./db.db.json', JSON.stringify(notes), (err) => {
             if (err) {
                 console.log(err);
             } else {
