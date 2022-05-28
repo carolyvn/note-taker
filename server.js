@@ -23,7 +23,7 @@ app.get('/notes', (req, res) => {
 
 // Display notes from db.json 
 app.get('/api/notes', (req, res) => {
-    fs.readFile('/db/db.json', 'utf8', (err, data) => {
+    fs.readFile(./db/db.json', 'utf8', (err, data) => {
         if (err) {
             console.log(err);
         };
@@ -45,7 +45,7 @@ app.post('/api/notes', (req, res) => {
         };
         const notes = JSON.parse(data);
         const newNote = req.body;
-        newNote.id = uuid();
+        newNote.id = uuidv1();
         notes.push(newNote);
 
         fs.writeFile('./db/db.json', JSON.stringify(notes), (err) => {
