@@ -23,7 +23,7 @@ app.get('/notes', (req, res) => {
 
 // Display notes from db.json 
 app.get('/api/notes', (req, res) => {
-    fs.readFile(./db/db.json', 'utf8', (err, data) => {
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
         if (err) {
             console.log(err);
         };
