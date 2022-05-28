@@ -12,5 +12,5 @@ To write and save notes on app.
 ## Deployed Link
 [Heroku Link](url "https://note-taker-yan.herokuapp.com/")
 
-## Demo
+## Screenshoot
 <img width="1421" alt="note-taker" src="https://user-images.githubusercontent.com/90424035/170839496-199bb0ce-c755-46e6-93df-97eca4935ff6.png">
