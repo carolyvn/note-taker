@@ -39,7 +39,7 @@ app.get('*', (req, res) => {
 
 // Save notes to db.json
 app.post('/api/notes', (req, res) => {
-    fs.readFile('/db/db.json', 'utf8', (err, data) => {
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
         if (err) {
             console.log(err);
         };
@@ -48,7 +48,7 @@ app.post('/api/notes', (req, res) => {
         newNote.id = uuid();
         notes.push(newNote);
 
-        fs.writeFile('/db/db.json', JSON.stringify(notes), (err) => {
+        fs.writeFile('./db/db.json', JSON.stringify(notes), (err) => {
             if (err) {
                 console.log(err);
             };
@@ -60,14 +60,14 @@ app.post('/api/notes', (req, res) => {
 
 // Delete notes from db.json
 app.delete('/api/notes/:id', (req, res) => {
-    fs.readFile('/db/db.json', 'utf8', (err, data) => {
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
         if (err) {
             console.log(err);
         };
         const notes = JSON.parse(data);
         notes.splice(req.params.id, 1);
 
-        fs.writeFile('/db.db.json', JSON.stringify(notes), (err) => {
+        fs.writeFile('./db.db.json', JSON.stringify(notes), (err) => {
             if (err) {
                 console.log(err);
             } else {
