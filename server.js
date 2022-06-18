@@ -45,7 +45,11 @@ app.post('/api/notes', (req, res) => {
         };
         const notes = JSON.parse(data);
         const newNote = req.body;
+<<<<<<< HEAD
         newNote.id = uuid.v1();
+=======
+        newNote.id = uuidv1();
+>>>>>>> d28466531aabc9802d7dd985b65e3955cc5628e6
         notes.push(newNote);
 
         fs.writeFile('./db/db.json', JSON.stringify(notes), (err) => {
